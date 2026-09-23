@@ -1,0 +1,3 @@
+@extends('layouts.app') @section('title','Data Guru | SMK Negeri 1 Cijati') @section('content')
+<section class="page-hero"><div class="container"><span class="eyebrow">TENAGA PENDIDIK</span><h1>Data Guru</h1><p>Tenaga pendidik yang mendukung proses pembelajaran dan pengembangan siswa.</p></div></section>
+<section class="section"><div class="container"><div class="cards three">@foreach($guru as $g)<article class="card teacher"><div class="avatar">{{ strtoupper(substr($g->nama,0,1)) }}</div><h3>{{ $g->nama }}</h3><span>{{ $g->jabatan }}</span><p>{{ $g->mapel }}</p></article>@endforeach</div></div></section>@endsection

@@ -1,0 +1,3 @@
+@extends('layouts.app') @section('title','Jurusan | SMK Negeri 1 Cijati') @section('content')
+<section class="page-hero"><div class="container"><span class="eyebrow">PROGRAM KEAHLIAN</span><h1>Jurusan SMK Negeri 1 Cijati</h1><p>Pilih program keahlian untuk mengembangkan kompetensi dan masa depanmu.</p></div></section>
+<section class="section"><div class="container"><div class="cards two">@foreach($jurusan as $j)<article class="card major large"><div class="icon-box">{{ $j->icon ?: '🎓' }}</div><span class="code">{{ $j->kode }}</span><h2>{{ $j->nama }}</h2><p>{{ $j->deskripsi }}</p></article>@endforeach</div></div></section>@endsection

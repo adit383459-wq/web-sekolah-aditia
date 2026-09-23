@@ -1,0 +1,55 @@
+STRUKTUR PROJECT WEB UKK ADITIA
+===============================
+
+smk-negeri-1-cijati/
+|-- app/
+|   |-- Http/Controllers/
+|   |   |-- Admin/
+|   |   |   |-- AuthController.php
+|   |   |   |-- BeritaController.php
+|   |   |   |-- DashboardController.php
+|   |   |   |-- EkstrakurikulerController.php
+|   |   |   |-- GuruController.php
+|   |   |   `-- JurusanController.php
+|   |   |-- Controller.php
+|   |   `-- HomeController.php
+|   |-- Models/
+|   |   |-- Berita.php
+|   |   |-- Ekstrakurikuler.php
+|   |   |-- Guru.php
+|   |   |-- Jurusan.php
+|   |   `-- User.php
+|   `-- Providers/AppServiceProvider.php
+|-- bootstrap/
+|   |-- app.php
+|   `-- providers.php
+|-- config/
+|-- database/
+|   |-- migrations/
+|   |-- seeders/DatabaseSeeder.php
+|   `-- smkn1_cijati.sql
+|-- public/
+|   |-- css/style.css
+|   |-- images/
+|   |-- js/app.js
+|   |-- .htaccess
+|   `-- index.php
+|-- resources/views/
+|   |-- admin/
+|   |-- layouts/app.blade.php
+|   |-- pages/
+|   `-- home.blade.php
+|-- routes/
+|   |-- console.php
+|   `-- web.php
+|-- storage/
+|-- artisan
+|-- composer.json
+|-- .env
+|-- .env.example
+|-- README-INSTALASI.txt
+`-- STRUKTUR-PROJECT.txt
+
+CATATAN:
+Folder vendor/ akan muncul setelah menjalankan composer install.
+Folder vendor tidak disertakan dalam ZIP agar file project tetap ringan.

@@ -1,0 +1,3 @@
+@extends('layouts.app') @section('title','Ekstrakurikuler | SMK Negeri 1 Cijati') @section('content')
+<section class="page-hero"><div class="container"><span class="eyebrow">PENGEMBANGAN DIRI</span><h1>Ekstrakurikuler</h1><p>Ruang bagi siswa untuk mengasah bakat, minat, kepemimpinan, dan kerja sama.</p></div></section>
+<section class="section"><div class="container"><div class="cards four">@foreach($ekskul as $e)<article class="card activity"><div class="big-icon">{{ $e->icon ?: '⭐' }}</div><h2>{{ $e->nama }}</h2><p>{{ $e->deskripsi }}</p><div class="meta">📅 {{ $e->jadwal }} · 👤 {{ $e->pembina }}</div></article>@endforeach</div></div></section>@endsection
