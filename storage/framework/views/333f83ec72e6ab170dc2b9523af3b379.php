@@ -1,10 +1,8 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'SMK Negeri 1 Cijati | Beranda'); ?>
 
-@section('title', 'SMK Negeri 1 Cijati | Beranda')
+<?php $__env->startSection('content'); ?>
 
-@section('content')
 
-{{-- HERO --}}
 <section class="hero hero-home hero-photo">
     <div class="hero-photo-overlay"></div>
 
@@ -33,7 +31,7 @@
             </p>
 
             <div class="hero-actions">
-                <a class="btn hero-yellow" href="{{ route('jurusan') }}">
+                <a class="btn hero-yellow" href="<?php echo e(route('jurusan')); ?>">
                     📚 Lihat Jurusan <span>→</span>
                 </a>
 
@@ -44,17 +42,17 @@
 
             <div class="hero-stats hero-stats-light">
                 <div>
-                    <strong>{{ $jurusan->count() }}</strong>
+                    <strong><?php echo e($jurusan->count()); ?></strong>
                     <span>Program Keahlian</span>
                 </div>
 
                 <div>
-                    <strong>{{ $guruCount }}</strong>
+                    <strong><?php echo e($guruCount); ?></strong>
                     <span>Guru & Pegawai</span>
                 </div>
 
                 <div>
-                    <strong>{{ $ekskul->count() }}</strong>
+                    <strong><?php echo e($ekskul->count()); ?></strong>
                     <span>Ekstrakurikuler</span>
                 </div>
             </div>
@@ -63,7 +61,7 @@
 
         <div class="hero-photo-side">
             <img
-                src="{{ asset('images/hero-sekolah-cijati.png') }}"
+                src="<?php echo e(asset('images/hero-sekolah-cijati.png')); ?>"
                 alt="Lingkungan SMK Negeri 1 Cijati"
             >
 
@@ -76,7 +74,7 @@
 </section>
 
 
-{{-- WELCOME --}}
+
 <section class="welcome-strip">
     <div class="container welcome-inner">
 
@@ -94,7 +92,7 @@
 </section>
 
 
-{{-- PROFIL --}}
+
 <section class="section" id="profil">
     <div class="container">
 
@@ -135,7 +133,7 @@
                     resmi sekolah sesuai data yang dikelola administrator.
                 </p>
 
-                <a class="btn primary" href="{{ route('admin.login') }}">
+                <a class="btn primary" href="<?php echo e(route('admin.login')); ?>">
                     Kelola Data Profil →
                 </a>
             </article>
@@ -145,7 +143,7 @@
 </section>
 
 
-{{-- FASILITAS --}}
+
 <section class="section soft" id="fasilitas">
     <div class="container">
 
@@ -199,7 +197,7 @@
 </section>
 
 
-{{-- JURUSAN --}}
+
 <section class="section">
     <div class="container">
 
@@ -209,7 +207,7 @@
                 <h2>4 Jurusan Pilihan</h2>
             </div>
 
-            <a class="text-link" href="{{ route('jurusan') }}">
+            <a class="text-link" href="<?php echo e(route('jurusan')); ?>">
                 Lihat semua →
             </a>
         </div>
@@ -217,11 +215,11 @@
 
         <div class="cards four">
 
-            @foreach($jurusan as $j)
+            <?php $__currentLoopData = $jurusan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
             <article class="card major major-modern">
 
-                {{-- FOTO JURUSAN --}}
+                
                 <div
                     class="icon-box"
                     style="
@@ -239,11 +237,11 @@
                     "
                 >
 
-                    @if($j->icon)
+                    <?php if($j->icon): ?>
 
                         <img
-                            src="{{ asset('storage/' . $j->icon) }}"
-                            alt="Foto {{ $j->nama }}"
+                            src="<?php echo e(asset('storage/' . $j->icon)); ?>"
+                            alt="Foto <?php echo e($j->nama); ?>"
                             style="
                                 width:100%;
                                 height:100%;
@@ -252,11 +250,11 @@
                             "
                         >
 
-                    @else
+                    <?php else: ?>
 
                         <span style="font-size:48px;">🎓</span>
 
-                    @endif
+                    <?php endif; ?>
 
                 </div>
 
@@ -268,27 +266,30 @@
                         margin-bottom:12px;
                     "
                 >
-                    {{ $j->kode }}
+                    <?php echo e($j->kode); ?>
+
                 </span>
 
 
                 <h3>
-                    {{ $j->nama }}
+                    <?php echo e($j->nama); ?>
+
                 </h3>
 
 
                 <p>
-                    {{ $j->deskripsi }}
+                    <?php echo e($j->deskripsi); ?>
+
                 </p>
 
 
-                <a href="{{ route('jurusan') }}">
+                <a href="<?php echo e(route('jurusan')); ?>">
                     Pelajari jurusan <span>→</span>
                 </a>
 
             </article>
 
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </div>
 
@@ -296,7 +297,7 @@
 </section>
 
 
-{{-- GURU --}}
+
 <section class="section soft" id="guru">
     <div class="container">
 
@@ -306,50 +307,52 @@
                 <h2>Guru & Pegawai</h2>
             </div>
 
-            <a class="text-link" href="{{ route('guru') }}">
-                Lihat semua {{ $guruCount }} data →
+            <a class="text-link" href="<?php echo e(route('guru')); ?>">
+                Lihat semua <?php echo e($guruCount); ?> data →
             </a>
         </div>
 
 
         <div class="cards four teacher-home-grid">
 
-            @foreach($guru as $g)
+            <?php $__currentLoopData = $guru; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $g): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
             <article class="card teacher teacher-home-card">
 
-                @if($g->foto)
+                <?php if($g->foto): ?>
 
                     <img
                         class="teacher-photo"
-                        src="{{ asset($g->foto) }}"
-                        alt="{{ $g->nama }}"
+                        src="<?php echo e(asset($g->foto)); ?>"
+                        alt="<?php echo e($g->nama); ?>"
                     >
 
-                @else
+                <?php else: ?>
 
                     <div class="avatar">
-                        {{ strtoupper(substr($g->nama, 0, 1)) }}
+                        <?php echo e(strtoupper(substr($g->nama, 0, 1))); ?>
+
                     </div>
 
-                @endif
+                <?php endif; ?>
 
-                <h3>{{ $g->nama }}</h3>
+                <h3><?php echo e($g->nama); ?></h3>
 
                 <span>
-                    {{ $g->jabatan ?: 'Guru / Pegawai' }}
+                    <?php echo e($g->jabatan ?: 'Guru / Pegawai'); ?>
+
                 </span>
 
             </article>
 
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </div>
     </div>
 </section>
 
 
-{{-- EKSTRAKURIKULER --}}
+
 <section class="section soft">
     <div class="container">
 
@@ -359,7 +362,7 @@
                 <h2>Ekstrakurikuler</h2>
             </div>
 
-            <a class="text-link" href="{{ route('ekstrakurikuler') }}">
+            <a class="text-link" href="<?php echo e(route('ekstrakurikuler')); ?>">
                 Selengkapnya →
             </a>
         </div>
@@ -367,30 +370,31 @@
 
         <div class="cards four">
 
-            @foreach($ekskul as $e)
+            <?php $__currentLoopData = $ekskul; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
             <article class="card activity activity-modern">
 
                 <div class="big-icon">
-                    {{ $e->icon ?: '⭐' }}
+                    <?php echo e($e->icon ?: '⭐'); ?>
+
                 </div>
 
-                <h3>{{ $e->nama }}</h3>
+                <h3><?php echo e($e->nama); ?></h3>
 
-                <p>{{ $e->deskripsi }}</p>
+                <p><?php echo e($e->deskripsi); ?></p>
 
-                <small>📅 {{ $e->jadwal }}</small>
+                <small>📅 <?php echo e($e->jadwal); ?></small>
 
             </article>
 
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </div>
     </div>
 </section>
 
 
-{{-- GALERI --}}
+
 <section class="section" id="galeri">
     <div class="container">
 
@@ -408,40 +412,40 @@
 
         <div class="gallery-grid">
 
-            @foreach($berita->take(3) as $g)
+            <?php $__currentLoopData = $berita->take(3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $g): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
             <div class="gallery-item">
 
-                @if($g->gambar)
+                <?php if($g->gambar): ?>
 
                     <img
-                        src="{{ asset('storage/' . $g->gambar) }}"
-                        alt="{{ $g->judul }}"
+                        src="<?php echo e(asset('storage/' . $g->gambar)); ?>"
+                        alt="<?php echo e($g->judul); ?>"
                     >
 
-                @else
+                <?php else: ?>
 
                     <div class="gallery-placeholder">
                         📷
                     </div>
 
-                @endif
+                <?php endif; ?>
 
                 <div>
-                    <strong>{{ $g->judul }}</strong>
+                    <strong><?php echo e($g->judul); ?></strong>
                     <small>Dokumentasi sekolah</small>
                 </div>
 
             </div>
 
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </div>
     </div>
 </section>
 
 
-{{-- BERITA --}}
+
 <section class="section">
     <div class="container">
 
@@ -451,7 +455,7 @@
                 <h2>Berita Sekolah</h2>
             </div>
 
-            <a class="text-link" href="{{ route('berita') }}">
+            <a class="text-link" href="<?php echo e(route('berita')); ?>">
                 Semua berita →
             </a>
         </div>
@@ -459,24 +463,24 @@
 
         <div class="cards three">
 
-            @foreach($berita as $b)
+            <?php $__currentLoopData = $berita; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
             <article class="card news">
 
                 <div class="news-image">
 
-                    @if($b->gambar)
+                    <?php if($b->gambar): ?>
 
                         <img
-                            src="{{ asset('storage/' . $b->gambar) }}"
-                            alt="{{ $b->judul }}"
+                            src="<?php echo e(asset('storage/' . $b->gambar)); ?>"
+                            alt="<?php echo e($b->judul); ?>"
                         >
 
-                    @else
+                    <?php else: ?>
 
                         <span>📰</span>
 
-                    @endif
+                    <?php endif; ?>
 
                 </div>
 
@@ -484,14 +488,15 @@
                 <div class="news-body">
 
                     <small>
-                        {{ optional($b->published_at)->translatedFormat('d F Y') }}
+                        <?php echo e(optional($b->published_at)->translatedFormat('d F Y')); ?>
+
                     </small>
 
-                    <h3>{{ $b->judul }}</h3>
+                    <h3><?php echo e($b->judul); ?></h3>
 
-                    <p>{{ $b->ringkasan }}</p>
+                    <p><?php echo e($b->ringkasan); ?></p>
 
-                    <a href="{{ route('berita.show', $b) }}">
+                    <a href="<?php echo e(route('berita.show', $b)); ?>">
                         Baca selengkapnya →
                     </a>
 
@@ -499,14 +504,14 @@
 
             </article>
 
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </div>
     </div>
 </section>
 
 
-{{-- KONTAK --}}
+
 <section class="section soft" id="kontak">
     <div class="container">
 
@@ -553,7 +558,7 @@
 
                 <a
                     class="btn primary"
-                    href="{{ route('admin.login') }}"
+                    href="<?php echo e(route('admin.login')); ?>"
                 >
                     Masuk Dashboard →
                 </a>
@@ -565,7 +570,7 @@
 </section>
 
 
-{{-- CTA --}}
+
 <section class="cta cta-modern">
     <div class="container cta-inner">
 
@@ -588,7 +593,7 @@
 
         <a
             class="btn light"
-            href="{{ route('jurusan') }}"
+            href="<?php echo e(route('jurusan')); ?>"
         >
             Mulai Jelajahi <span>→</span>
         </a>
@@ -596,4 +601,6 @@
     </div>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /data/data/com.termux/files/home/web-sekolah-aditia/resources/views/home.blade.php ENDPATH**/ ?>

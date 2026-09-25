@@ -1,3 +1,56 @@
-@extends('layouts.app') @section('title',$berita->judul) @section('content')
-<section class="page-hero"><div class="container"><span class="eyebrow">BERITA SEKOLAH</span><h1>{{ $berita->judul }}</h1><p>{{ optional($berita->published_at)->translatedFormat('d F Y') }}</p></div></section>
-<section class="section"><div class="container article">@if($berita->gambar)<img class="article-image" src="{{ asset($berita->gambar) }}" alt="{{ $berita->judul }}">@endif<p class="lead">{{ $berita->ringkasan }}</p><div class="article-body">{!! nl2br(e($berita->isi)) !!}</div><a class="btn ghost" href="{{ route('berita') }}">← Kembali ke berita</a></div></section>@endsection
+@extends('layouts.app')
+
+@section('title', $berita->judul)
+
+@section('content')
+
+<section class="page-hero">
+    <div class="container">
+
+        <span class="eyebrow">BERITA SEKOLAH</span>
+
+        <h1>
+            {{ $berita->judul }}
+        </h1>
+
+        <p>
+            {{ optional($berita->published_at)->translatedFormat('d F Y') }}
+        </p>
+
+    </div>
+</section>
+
+<section class="section">
+
+    <div class="container article">
+
+        @if($berita->gambar)
+
+            <img
+                class="article-image"
+                src="{{ asset('storage/' . $berita->gambar) }}"
+                alt="{{ $berita->judul }}"
+            >
+
+        @endif
+
+        <p class="lead">
+            {{ $berita->ringkasan }}
+        </p>
+
+        <div class="article-body">
+            {!! nl2br(e($berita->isi)) !!}
+        </div>
+
+        <a
+            class="btn ghost"
+            href="{{ route('berita') }}"
+        >
+            ← Kembali ke berita
+        </a>
+
+    </div>
+
+</section>
+
+@endsection

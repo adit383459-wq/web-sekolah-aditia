@@ -1,15 +1,13 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Jurusan'); ?>
 
-@section('title', 'Jurusan')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <section class="section">
     <div class="container">
 
         <div class="cards two">
 
-            @foreach($jurusan as $j)
+            <?php $__currentLoopData = $jurusan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                 <article class="card major large">
 
@@ -28,11 +26,11 @@
                         "
                     >
 
-                        @if($j->icon)
+                        <?php if($j->icon): ?>
 
                             <img
-                                src="{{ asset('storage/' . $j->icon) }}"
-                                alt="Foto {{ $j->nama }}"
+                                src="<?php echo e(asset('storage/' . $j->icon)); ?>"
+                                alt="Foto <?php echo e($j->nama); ?>"
                                 style="
                                     width:100%;
                                     height:100%;
@@ -41,33 +39,38 @@
                                 "
                             >
 
-                        @else
+                        <?php else: ?>
 
                             <span style="font-size:64px;">🎓</span>
 
-                        @endif
+                        <?php endif; ?>
 
                     </div>
 
                     <span class="code">
-                        {{ $j->kode }}
+                        <?php echo e($j->kode); ?>
+
                     </span>
 
                     <h2>
-                        {{ $j->nama }}
+                        <?php echo e($j->nama); ?>
+
                     </h2>
 
                     <p>
-                        {{ $j->deskripsi }}
+                        <?php echo e($j->deskripsi); ?>
+
                     </p>
 
                 </article>
 
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </div>
 
     </div>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /data/data/com.termux/files/home/web-sekolah-aditia/resources/views/pages/jurusan.blade.php ENDPATH**/ ?>
